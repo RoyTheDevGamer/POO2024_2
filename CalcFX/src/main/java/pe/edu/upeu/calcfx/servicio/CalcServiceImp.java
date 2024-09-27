@@ -29,12 +29,12 @@ public class CalcServiceImp implements CalcServiceI{
     @Override
     public void actualizarResultados(CalcTO to, int index) {
 
-        //dbOper.set(index,to);
+        dbOper.actuazlizar(to, index);
     }
 
     @Override
     public void eliminarResultados(int index) {
 
-        //dbOper.remove(index);
+        dbOper.eliminar(index);
     }
 }

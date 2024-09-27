@@ -61,7 +61,6 @@ public class CalcControl {
         switch (button.getId()){
             case "btn7","btn8","btn9","btn6","btn5","btn4","btn3","btn2","btn1","btn0":{
                 escribirNumeros(button.getText());
-
             }break;
             case "btnSum", "btnMul", "btnRest", "btnDiv":{
                 operador(button.getText());
@@ -100,10 +99,13 @@ public class CalcControl {
         to.setNum1(String.valueOf(val1));
         to.setNum2(String.valueOf(val2));
         to.setOperador(valores[1].charAt(0));
+        to.setId(indexEdit);
+
         to.setResultado(String.valueOf(txtResultado.getText()));
         if(indexEdit!=-1){
-            serviceI.actualizarResultados(to, indexEdit);
+            serviceI.actualizarResultados(to, to.getId());
         }else{
+            System.out.println("VV:"+txtResultado.getText());
             serviceI.guardarResultados(to);
         }
         indexEdit=-1;
@@ -118,7 +120,7 @@ public class CalcControl {
 
     private void deleteOperCalc(CalcTO cal, int index) {
         System.out.println("Deleting: " + cal.getNum2());
-        serviceI.eliminarResultados(index);
+        serviceI.eliminarResultados(cal.getId());
         listaOper();
         //tableView.getItems().remove(cal);  // Elimina la operación del TableView
     }
@@ -134,13 +136,13 @@ public class CalcControl {
                 editButton.getStyleClass().setAll("btn", "btn-success");
                 editButton.setOnAction(event -> {
                     CalcTO cal = getTableView().getItems().get(getIndex());
-                    editOperCalc(cal, getIndex());
+                    editOperCalc(cal,cal.getId());
                 });
 
                 deleteButton.getStyleClass().setAll("btn", "btn-danger");
                 deleteButton.setOnAction(event -> {
                     CalcTO cal = getTableView().getItems().get(getIndex());
-                    deleteOperCalc(cal,getIndex());
+                    deleteOperCalc(cal,cal.getId());
                 });
             }
 
@@ -169,7 +171,7 @@ public class CalcControl {
 
         // Vincular columnas con propiedades de CalcTO
         cVal1.setCellValueFactory(new PropertyValueFactory<CalcTO,
-                String>("num1"));
+                        String>("num1"));
 
         cVal1.setCellFactory(TextFieldTableCell.<CalcTO>forTableColumn());
 
@@ -201,21 +203,6 @@ public class CalcControl {
 
         cOpc.prefWidthProperty().bind(tableView.widthProperty().multiply(0.25));
         tableView.setItems(calcTOList);
-    }
-    @FXML
-    public void iniciar(){
-        activaDesacticaB(false);
-    }
-
-    @FXML
-    public void anular(){
-        activaDesacticaB(true);
-    }
-
-    public void activaDesacticaB(boolean indi){
-        btn7.setDisable(indi);
-        btn8.setDisable(indi);
-        btn9.setDisable(indi);
     }
 
 }

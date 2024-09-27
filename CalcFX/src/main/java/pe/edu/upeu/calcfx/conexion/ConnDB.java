@@ -35,7 +35,7 @@ public class ConnDB {
                         rs.getString("num2")+
                         rs.getString("operador")+
                         rs.getString("resultado")
-                );
+                        );
             }
         }catch (Exception e) {
             System.out.println(e.getMessage());
