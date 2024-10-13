@@ -5,7 +5,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
-import pe.edu.upeu.sysalmacenfx.repositorio.MainX;
+//import pe.edu.upeu.sysalmacenfx.servicio.MainX;
+import pe.edu.upeu.sysalmacenfx.pruebas.MainX2;
 
 @SpringBootApplication
 public class SysAlmacenFxApplication{
@@ -16,7 +17,7 @@ public class SysAlmacenFxApplication{
 	@Bean
 	public CommandLineRunner run(ApplicationContext context){
 		return args -> {
-			MainX mx = context.getBean(MainX.class);
+			MainX2 mx = context.getBean(MainX2.class);
 			mx.menu();
 		};
 	}

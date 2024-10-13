@@ -1,8 +1,10 @@
-package pe.edu.upeu.sysalmacenfx.repositorio;
+package pe.edu.upeu.sysalmacenfx.pruebas;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import pe.edu.upeu.sysalmacenfx.modelo.Categoria;
+import pe.edu.upeu.sysalmacenfx.repositorio.CategoriaRepository;
+
 import java.util.List;
 import java.util.Scanner;
 
@@ -18,9 +20,8 @@ public class MainX {
             System.out.println("1.-Ver lista-------------");
             System.out.println("2.-Anadir Categoria------");
             System.out.println("3.-Eliminar Categoria----");
-            System.out.println("4.-Actualizar Categoria--");
-            System.out.println("5.-Editar Categoria------");
-            System.out.println("6.--------Salir----------");
+            System.out.println("4.-Editar Categoria------");
+            System.out.println("5.--------Salir----------");
             opc = joji.nextInt();
             joji.nextLine();   //Roy Cruz Namani
 
@@ -35,12 +36,9 @@ public class MainX {
                     eliminar();
                     break;
                 case 4:
-                    listar();
-                    break;
-                case 5:
                     editar();
                     break;
-                case 6:
+                case 5:
                     System.out.println("Saliendo...:)");
                     break;
                 default:
