@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane style="-fx-background-color: #2e354f;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pe.edu.upeu.sysalmacenfx.control.LoginController">
+   <children>
+      <AnchorPane layoutX="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0">
+         <children>
+            <Label layoutX="183.0" layoutY="17.0" text="Login SysAlmacen" textFill="#b5abd1" AnchorPane.bottomAnchor="17.400000000000002" AnchorPane.topAnchor="17.0">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <padding>
+                  <Insets bottom="10.0" />
+               </padding>
+            </Label>
+            <Circle fill="RED" layoutX="34.0" layoutY="31.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fill="#e3ff1f" layoutX="80.0" layoutY="31.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fill="#1fff63" layoutX="128.0" layoutY="31.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="5.0" layoutY="62.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0">
+         <children>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="108.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/icons.png" />
+               </image></ImageView>
+         </children></AnchorPane>
+      <AnchorPane layoutX="14.0" layoutY="213.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0">
+         <children>
+            <AnchorPane layoutX="14.0" layoutY="-1.0" style="-fx-border-color: #b5abd1; -fx-border-radius: 2;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+               <children>
+                  <TextField layoutX="113.0" layoutY="15.0" prefHeight="26.0" prefWidth="222.0" />
+                  <Label layoutX="29.0" layoutY="14.0" text="Usuario" textFill="#b5abd1">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Label>
+               </children>
+               <padding>
+                  <Insets bottom="15.0" />
+               </padding>
+            </AnchorPane>
+            <AnchorPane layoutY="62.0" style="-fx-border-color: #b5abd1; -fx-border-radius: 2;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+               <children>
+                  <PasswordField layoutX="117.0" layoutY="14.0" prefHeight="26.0" prefWidth="222.0" />
+                  <Label layoutX="37.0" layoutY="13.0" text="Clave" textFill="#b5abd1">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Label>
+               </children>
+               <padding>
+                  <Insets bottom="15.0" />
+               </padding>
+            </AnchorPane>
+         </children></AnchorPane>
+      <AnchorPane layoutX="5.0" layoutY="349.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <Button layoutX="5.0" layoutY="-1.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="356.0" style="-fx-background-color: #43bb73;" text="Ingresar" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+         </children></AnchorPane>
+   </children>
+</AnchorPane>
