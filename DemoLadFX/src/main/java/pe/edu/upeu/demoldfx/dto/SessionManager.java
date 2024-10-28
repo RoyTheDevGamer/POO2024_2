@@ -1,4 +1,4 @@
-package pe.edu.upeu.sysalmacenfx.dto;
+package pe.edu.upeu.demoldfx.dto;
 
 import lombok.Data;
 

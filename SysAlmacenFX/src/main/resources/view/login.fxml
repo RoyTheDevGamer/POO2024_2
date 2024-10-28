@@ -35,7 +35,7 @@
          <children>
             <AnchorPane layoutX="14.0" layoutY="-1.0" style="-fx-border-color: #b5abd1; -fx-border-radius: 2;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                <children>
-                  <TextField layoutX="113.0" layoutY="15.0" prefHeight="26.0" prefWidth="222.0" />
+                  <TextField fx:id="txtUsuario" layoutX="113.0" layoutY="15.0" prefHeight="26.0" prefWidth="222.0" />
                   <Label layoutX="29.0" layoutY="14.0" text="Usuario" textFill="#b5abd1">
                      <font>
                         <Font size="18.0" />
@@ -47,7 +47,7 @@
             </AnchorPane>
             <AnchorPane layoutY="62.0" style="-fx-border-color: #b5abd1; -fx-border-radius: 2;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                <children>
-                  <PasswordField layoutX="117.0" layoutY="14.0" prefHeight="26.0" prefWidth="222.0" />
+                  <PasswordField fx:id="txtClave" layoutX="117.0" layoutY="14.0" prefHeight="26.0" prefWidth="222.0" />
                   <Label layoutX="37.0" layoutY="13.0" text="Clave" textFill="#b5abd1">
                      <font>
                         <Font size="18.0" />
@@ -60,7 +60,7 @@
          </children></AnchorPane>
       <AnchorPane layoutX="5.0" layoutY="349.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
-            <Button layoutX="5.0" layoutY="-1.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="356.0" style="-fx-background-color: #43bb73;" text="Ingresar" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+            <Button fx:id="btnIngresar" onAction="#login" layoutX="5.0" layoutY="-1.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="356.0" style="-fx-background-color: #43bb73;" text="Ingresar" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
          </children></AnchorPane>
    </children>
 </AnchorPane>
