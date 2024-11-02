@@ -11,7 +11,7 @@
          <children>
             <Pane prefHeight="36.0" prefWidth="191.0" style="-fx-background-color: black;">
                <children>
-                  <Label layoutX="48.0" layoutY="8.0" text="PLatos Del Dia" textFill="WHITE">
+                  <Label layoutX="48.0" layoutY="8.0" text="Platos Del Dia" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
@@ -41,8 +41,8 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Label maxWidth="1.7976931348623157E308" text="Nombre:" GridPane.columnSpan="2" GridPane.rowIndex="1" />
-                  <TextField fx:id="txtNombrePlatos" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="1">
+                  <Label maxWidth="1.7976931348623157E308" text="Nombre:" GridPane.columnSpan="2" />
+                  <TextField fx:id="txtNombrePlatos" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.columnSpan="3">
                      <GridPane.margin>
                         <Insets left="15.0" right="15.0" />
                      </GridPane.margin>
@@ -68,16 +68,22 @@
                         <Insets left="15.0" right="15.0" />
                      </GridPane.margin>
                   </TextField>
-                  <ComboBox fx:id="cbxHorario" maxWidth="1.7976931348623157E308" prefWidth="150.0" GridPane.columnSpan="4" GridPane.rowIndex="4">
+                  <ComboBox fx:id="cbxCategoria" maxWidth="1.7976931348623157E308" prefWidth="150.0" GridPane.columnSpan="4" GridPane.rowIndex="4">
                      <GridPane.margin>
                         <Insets left="15.0" right="15.0" />
                      </GridPane.margin>
                   </ComboBox>
-                  <Label maxWidth="1.7976931348623157E308" text="Horario:" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <Label maxWidth="1.7976931348623157E308" text="Categoria:" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="3" />
+                  <TextField fx:id="txtDescripcion" layoutX="70.0" layoutY="11.0" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="1">
+                     <GridPane.margin>
+                        <Insets left="15.0" right="15.0" />
+                     </GridPane.margin>
+                  </TextField>
+                  <Label text="Descrip:" GridPane.rowIndex="1" />
                </children>
             </GridPane>
          </children>
       </Pane>
-      <TableView fx:id="tableView" layoutX="200.0" layoutY="14.0" prefHeight="376.0" prefWidth="481.0" />
+      <TableView fx:id="tableView" layoutX="200.0" layoutY="6.0" prefHeight="384.0" prefWidth="482.0" />
    </children>
 </AnchorPane>

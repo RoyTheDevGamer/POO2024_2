@@ -25,7 +25,8 @@ public class PlatosService {
         try {
             Platos toe=repo.findById(id).get();
             if (toe!=null){
-                toe.setNombre_platos(to.getNombre_platos());
+                toe.setNombre(to.getNombre());
+                toe.setDescripcion(to.getDescripcion());
             }
             return repo.save(toe);
 

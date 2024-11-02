@@ -12,14 +12,14 @@ import lombok.NoArgsConstructor;
 @Data
 
 @Entity
-@Table(name = "roy_horario")
-public class Horario {
+@Table(name = "roy_categoria")
+public class Categoria {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_horario")
-    private Long idHorario;
-    @Column(name = "nombre_horario", nullable = false, length = 20)
-    private String nombre_horario;
+    @Column(name = "id_categoria")
+    private Long idCategoria;
+    @Column(name = "nombre_categoria", nullable = false, length = 20)
+    private String nombre;
 
 
 }

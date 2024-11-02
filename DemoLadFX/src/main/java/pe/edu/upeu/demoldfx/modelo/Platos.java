@@ -22,16 +22,19 @@ public class Platos {
     @Column(name = "id_platos")
     private Long idPlatos;
     @NotNull(message = "El nombre no puede estar vacío")
-    @Size(min = 2, max = 20, message = "El nombre debe tener entre 2 y 20 caracteres")
+    @Size(min = 2, max = 30, message = "El nombre debe tener entre 2 y 30 caracteres")
     @Column(name = "nombre_platos", nullable = false, length = 30)
-    private String nombre_platos;
+    private String nombre;
+    @Size(min = 2, max = 60, message = "La descripcion debe tener entre 2 y 60 caracteres")
+    @Column(name = "decripcion_platos", nullable = false, length = 60)
+    private String descripcion;
     @PositiveOrZero(message = "El Precio Anterior debe ser positivo o cero")
     @Column(name = "precio_platos", nullable = false, length = 10)
-    private Double precio_platos;
-    @NotNull(message = "El horario no puede estar vacío")
+    private Double precio;
+    @NotNull(message = "La categoria no puede estar vacío")
     @ManyToOne
-    @JoinColumn(name = "id_horario", referencedColumnName = "id_horario",
-            nullable = false, foreignKey = @ForeignKey(name = "FK_HORARIO_PLATOS") )
-    private Horario horario;
+    @JoinColumn(name = "id_categoria", referencedColumnName = "id_categoria",
+            nullable = false, foreignKey = @ForeignKey(name = "FK_CATEGORIA_PLATOS") )
+    private Categoria categoria;
 
 }

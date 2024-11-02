@@ -3,31 +3,32 @@ package pe.edu.upeu.demoldfx.servicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pe.edu.upeu.demoldfx.dto.ComboBoxOption;
-import pe.edu.upeu.demoldfx.modelo.Horario;
-import pe.edu.upeu.demoldfx.repositorio.HorarioRepository;
+import pe.edu.upeu.demoldfx.modelo.Categoria;
+import pe.edu.upeu.demoldfx.repositorio.CategoriaRepository;
+
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
 
-public class HorarioService {
+public class CategoriaService {
     @Autowired
-    HorarioRepository repo;
+    CategoriaRepository repo;
     //C
-    public Horario save(Horario to){
+    public Categoria save(Categoria to){
         return repo.save(to);
     }
     //R
-    public List<Horario> list(){
+    public List<Categoria> list(){
         return repo.findAll();
     }
     //U
-    public Horario update(Horario to, Long id){
+    public Categoria update(Categoria to, Long id){
         try {
-            Horario toe=repo.findById(id).get();
+            Categoria toe=repo.findById(id).get();
             if (toe!=null){
-                toe.setNombre_horario(to.getNombre_horario());
+                toe.setNombre(to.getNombre());
             }
             return repo.save(toe);
 
@@ -37,7 +38,7 @@ public class HorarioService {
         return null;
     }
 
-    public Horario update(Horario to){
+    public Categoria update(Categoria to){
         return repo.save(to);
     }
 
@@ -46,17 +47,17 @@ public class HorarioService {
         repo.deleteById(id);
     }
 
-    public Horario searchById(Long id){
+    public Categoria searchById(Long id){
         return repo.findById(id).orElse(null);
     }
 
     public List<ComboBoxOption> listarComboBox(){
         List<ComboBoxOption> listar=new ArrayList<>();
         ComboBoxOption cb;
-        for (Horario cate : repo.findAll()) {
+        for (Categoria cate : repo.findAll()) {
             cb=new ComboBoxOption();
-            cb.setKey(String.valueOf(cate.getIdHorario()));
-            cb.setValue(cate.getNombre_horario());
+            cb.setKey(String.valueOf(cate.getIdCategoria()));
+            cb.setValue(cate.getNombre());
             listar.add(cb);
         }
         return listar;

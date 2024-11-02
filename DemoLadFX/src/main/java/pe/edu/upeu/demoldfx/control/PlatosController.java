@@ -21,7 +21,7 @@ import pe.edu.upeu.demoldfx.componente.Toast;
 import pe.edu.upeu.demoldfx.dto.ComboBoxOption;
 import pe.edu.upeu.demoldfx.componente.ComboBoxAutoComplete;
 import pe.edu.upeu.demoldfx.modelo.Platos;
-import pe.edu.upeu.demoldfx.servicio.HorarioService;
+import pe.edu.upeu.demoldfx.servicio.CategoriaService;
 import pe.edu.upeu.demoldfx.servicio.PlatosService;
 
 import java.util.LinkedHashMap;
@@ -35,15 +35,15 @@ import java.util.stream.Collectors;
 
 public class PlatosController {
     @FXML
-    TextField txtNombrePlatos, txtPrecio,txtFiltroDato;
+    TextField txtNombrePlatos, txtPrecio,txtFiltroDato,txtDescripcion;
     @FXML
-    ComboBox<ComboBoxOption> cbxHorario;
+    ComboBox<ComboBoxOption> cbxCategoria;
     @FXML
     private TableView<Platos> tableView;
     @FXML
     Label lbnMsg;
     @Autowired
-    HorarioService hs;
+    CategoriaService cs;
     @Autowired
     PlatosService ps;
     @FXML
@@ -67,16 +67,16 @@ public class PlatosController {
         timeline.setCycleCount(1);
         timeline.play();
 
-        cbxHorario.setTooltip(new Tooltip());
-        cbxHorario.getItems().addAll(hs.listarComboBox());
-        cbxHorario.setOnAction(Event ->{
-            ComboBoxOption selectedProduct = cbxHorario.getSelectionModel().getSelectedItem();
+        cbxCategoria.setTooltip(new Tooltip());
+        cbxCategoria.getItems().addAll(cs.listarComboBox());
+        cbxCategoria.setOnAction(Event ->{
+            ComboBoxOption selectedProduct = cbxCategoria.getSelectionModel().getSelectedItem();
             if (selectedProduct != null){
                 String selectedld = selectedProduct.getKey();
-                System.out.println("ID del producto selecionado: " + selectedld);
+                System.out.println("ID del plato selecionado: " + selectedld);
             }
         });
-        new ComboBoxAutoComplete<>(cbxHorario);
+        new ComboBoxAutoComplete<>(cbxCategoria);
 
         ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
         validator = factory.getValidator();
@@ -84,9 +84,11 @@ public class PlatosController {
         TableViewHelper<Platos> tableViewHelper = new TableViewHelper<>();
         LinkedHashMap<String, ColumnInfo> columns = new LinkedHashMap<>();
         columns.put("ID",new ColumnInfo("idPlatos",20.0));
-        columns.put("Nombre Del Plato",new ColumnInfo("nombre_platos",150.0));
-        columns.put("Descripcion",new ColumnInfo("Horario.nombre_horario",100.0));
-        columns.put("Precio",new ColumnInfo("precio_platos",80.0));
+        columns.put("Nombre Del Plato",new ColumnInfo("nombre",150.0));
+        columns.put("Descripcion",new ColumnInfo("descripcion",100.0));
+        columns.put("Precio",new ColumnInfo("precio",80.0));
+        columns.put("Categoria",new ColumnInfo("Categoria.nombre",100.0));
+
         Consumer<Platos> updateAction = (Platos platos) ->{
             System.out.println("Actualizar: " + platos);
             editForm(platos);
@@ -124,13 +126,15 @@ public class PlatosController {
     public void limpiarError(){
         txtNombrePlatos.getStyleClass().remove("text-field-error");
         txtPrecio.getStyleClass().remove("text-field-error");
-        cbxHorario.getStyleClass().remove("text-field-error");
+        txtDescripcion.getStyleClass().remove("text-field-error");
+        cbxCategoria.getStyleClass().remove("text-field-error");
     }
 
     public void clearForm(){
         txtNombrePlatos.setText("");
         txtPrecio.setText("");
-        cbxHorario.getSelectionModel().select(null);
+        txtDescripcion.setText("");
+        cbxCategoria.getSelectionModel().select(null);
         idPlatosCE=0L;
         limpiarError();
     }
@@ -146,15 +150,18 @@ public class PlatosController {
         // Mostrar el primer mensaje de error
         for (ConstraintViolation<Platos> violacion : violacionesOrdenadasPorPropiedad) {
             String campo = violacion.getPropertyPath().toString();
-            if(campo.equals("nombre_platos")){
-                erroresOrdenados.put("nombre_platos", violacion.getMessage());
+            if(campo.equals("nombre")){
+                erroresOrdenados.put("nombre", violacion.getMessage());
                 txtNombrePlatos.getStyleClass().add("text-field-error");
-            }else if (campo.equals("precio_platos")) {
-                erroresOrdenados.put("precio_platos", violacion.getMessage());
+            }else if (campo.equals("precio")) {
+                erroresOrdenados.put("precio", violacion.getMessage());
                 txtPrecio.getStyleClass().add("text-field-error");
-            }else if (campo.equals("horario")) {
-                erroresOrdenados.put("horario", violacion.getMessage());
-                cbxHorario.getStyleClass().add("text-field-error");
+            }else if (campo.equals("categoria")) {
+                erroresOrdenados.put("categoria", violacion.getMessage());
+                cbxCategoria.getStyleClass().add("text-field-error");
+            }else if (campo.equals("descripcion")) {
+                erroresOrdenados.put("descripcion", violacion.getMessage());
+                txtDescripcion.getStyleClass().add("text-field-error");
             }
         }
         // Mostrar el primer error en el orden deseado
@@ -167,10 +174,11 @@ public class PlatosController {
     @FXML
     public void validarFormulario() {
         formulario = new Platos();
-        formulario.setNombre_platos(txtNombrePlatos.getText());
-        formulario.setPrecio_platos(Double.parseDouble(txtPrecio.getText()==""?"0":txtPrecio.getText()));
-        String idxH=cbxHorario.getSelectionModel().getSelectedItem()==null?"0":cbxHorario.getSelectionModel().getSelectedItem().getKey();
-        formulario.setHorario(hs.searchById(Long.parseLong(idxH)));
+        formulario.setNombre(txtNombrePlatos.getText());
+        formulario.setDescripcion(txtDescripcion.getText());
+        formulario.setPrecio(Double.parseDouble(txtPrecio.getText()==""?"0":txtPrecio.getText()));
+        String idxH=cbxCategoria.getSelectionModel().getSelectedItem()==null?"0":cbxCategoria.getSelectionModel().getSelectedItem().getKey();
+        formulario.setCategoria(cs.searchById(Long.parseLong(idxH)));
         Set<ConstraintViolation<Platos>> violaciones = validator.validate(formulario);
         // Si prefieres ordenarlo por el nombre de la propiedad que violó la restricción, podrías usar:
         List<ConstraintViolation<Platos>> violacionesOrdenadasPorPropiedad = violaciones.stream()
@@ -210,13 +218,13 @@ public class PlatosController {
             List<Platos> platosFiltrados = listarPlatos.stream()
                     .filter(platos -> {
                         // Verificar si el filtro coincide con alguno de los campos
-                        if (platos.getNombre_platos().toLowerCase().contains(lowerCaseFilter)) {
+                        if (platos.getNombre().toLowerCase().contains(lowerCaseFilter)) {
                             return true;
                         }
-                        if (String.valueOf(platos.getPrecio_platos()).contains(lowerCaseFilter)) {
+                        if (String.valueOf(platos.getPrecio()).contains(lowerCaseFilter)) {
                             return true;
                         }
-                        if (platos.getHorario().getNombre_horario().toLowerCase().contains(lowerCaseFilter)) {
+                        if (platos.getCategoria().getNombre().toLowerCase().contains(lowerCaseFilter)) {
                             return true;
                         }
                         return false; // Si no coincide con ningún campo
@@ -229,12 +237,13 @@ public class PlatosController {
     }
 
     public void editForm(Platos platos){
-        txtNombrePlatos.setText(platos.getNombre_platos());
-        txtPrecio.setText(platos.getPrecio_platos().toString());
+        txtNombrePlatos.setText(platos.getNombre());
+        txtDescripcion.setText(platos.getDescripcion());
+        txtPrecio.setText(platos.getPrecio().toString());
         // Seleccionar el ítem en cbxMarca según el ID de Marca
-        cbxHorario.getSelectionModel().select(
-                cbxHorario.getItems().stream()
-                        .filter(marca -> Long.parseLong(marca.getKey())==platos.getHorario().getIdHorario())
+        cbxCategoria.getSelectionModel().select(
+                cbxCategoria.getItems().stream()
+                        .filter(marca -> Long.parseLong(marca.getKey())==platos.getCategoria().getIdCategoria())
                         .findFirst()
                         .orElse(null)
         );
