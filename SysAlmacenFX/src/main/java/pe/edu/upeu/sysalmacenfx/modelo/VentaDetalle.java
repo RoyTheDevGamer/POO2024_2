@@ -1,4 +1,5 @@
 package pe.edu.upeu.sysalmacenfx.modelo;
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -37,4 +38,3 @@ public class VentaDetalle {
             "FK_PRODUCTO_VENTADETALLE"))
     private Producto producto;
 }
-

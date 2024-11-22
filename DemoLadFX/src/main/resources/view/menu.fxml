@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane prefHeight="400.0" prefWidth="770.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pe.edu.upeu.demoldfx.control.MenuController">
+
+   <!-- Menú superior -->
+   <top>
+      <MenuBar prefHeight="25.0" prefWidth="426.0">
+         <Menu fx:id="panelMenu" text="Panel" />
+         <Menu fx:id="mesasMenu" text="Mesas" />
+         <Menu fx:id="platosMenu" onAction="#platos" text="Platos">
+            <items>
+               <MenuItem mnemonicParsing="false" onAction="#platos" text="Reg. Platos" />
+            </items></Menu>
+         <Menu fx:id="pedidosMenu" text="Pedidos">
+            <items>
+               <MenuItem mnemonicParsing="false" onAction="#pedidos" text="Reg Pedido" />
+            </items></Menu>
+         <Menu fx:id="datosMenu" text="Datos" />
+         <Menu fx:id="usuarioMenu" text="Usuarios">
+            <items>
+               <MenuItem mnemonicParsing="false" onAction="#usuario" text="Reg Usuarios" />
+            </items></Menu>
+         <Menu fx:id="permisosMenu" text="Venta" />
+         <Menu fx:id="archivoMenu" text="Opciones">
+            <MenuItem onAction="#cerrarSesion" text="Cerrar Sesión" />
+            <MenuItem onAction="#salir" text="Salir" />
+         </Menu>
+      </MenuBar>
+   </top>
+   <center>
+      <StackPane fx:id="contenedorPrincipal" prefHeight="350.0" prefWidth="500.0">
+         <!-- Aquí se cargarán las vistas dinámicamente -->
+      </StackPane>
+
+   </center>
+
+</BorderPane>

@@ -8,6 +8,7 @@ public class SessionManager {
     Long userId;
     String userName;
     String nombrePerfil;
+
     public static synchronized SessionManager getInstance() {
         if (instance == null) {
             instance = new SessionManager();

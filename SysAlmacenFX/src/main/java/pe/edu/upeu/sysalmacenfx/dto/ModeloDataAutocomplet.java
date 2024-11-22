@@ -16,4 +16,3 @@ public class ModeloDataAutocomplet {
         return nameDysplay+" "+idx+" " + otherData;
     }
 }
-

@@ -16,25 +16,33 @@ import java.util.TreeSet;
 
 @Component
 public class ProdAutoCompControl {
+
     @Autowired
     ProductoService ps;
+
     @FXML
     TextField txtBuscarProd, txtPrecio, txtStock;
+
     AutoCompleteTextField actf;
     private final SortedSet<ModeloDataAutocomplet> entries = new TreeSet<>((ModeloDataAutocomplet o1, ModeloDataAutocomplet o2) ->
             o1.toString().compareTo(o2.toString()));
+
     Stage stage;
     @FXML
     private AnchorPane miContenedor;
+
     ModeloDataAutocomplet lastProducto;
+
     @FXML
     public void initialize(){
         Platform.runLater(() -> {
             stage = (Stage) miContenedor.getScene().getWindow();
             System.out.println("El título del stage es: " + stage.getTitle());
         });
+
         listarProducto();
         actf=new AutoCompleteTextField<>(entries, txtBuscarProd);
+
         txtBuscarProd.setOnKeyReleased(e->{
             lastProducto=(ModeloDataAutocomplet) actf.getLastSelectedObject();
             if(lastProducto!=null){
@@ -48,5 +56,6 @@ public class ProdAutoCompControl {
     public void listarProducto(){
         entries.addAll(ps.listAutoCompletProducto());
     }
-}
 
+
+}

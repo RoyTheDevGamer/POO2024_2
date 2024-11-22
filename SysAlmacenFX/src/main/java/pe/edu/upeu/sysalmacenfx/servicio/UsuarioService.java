@@ -46,4 +46,5 @@ public class UsuarioService {
     public Usuario loginUsuario(String user, String clave) {
         return repo.loginUsuario(user, clave);
     }
+
 }

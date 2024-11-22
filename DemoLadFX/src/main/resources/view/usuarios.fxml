@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="miContenedor" prefHeight="400.0" prefWidth="770.0" style="-fx-background-color: #ffff;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pe.edu.upeu.demoldfx.control.UsuariosController">
+    <children>
+        <Circle layoutX="84.0" layoutY="74.0" radius="73.0" stroke="BLACK" strokeType="INSIDE" />
+        <Label layoutX="15.0" layoutY="44.0" prefHeight="67.0" prefWidth="145.0" text="Register" textFill="WHITE">
+            <font>
+                <Font name="Comic Sans MS" size="36.0" />
+            </font>
+        </Label>
+        <Pane layoutX="174.0" layoutY="14.0" prefHeight="42.0" prefWidth="280.0" style="-fx-border-color: black; -fx-border-radius: 2;" AnchorPane.leftAnchor="174.0" AnchorPane.rightAnchor="316.0">
+            <children>
+                <TextField fx:id="txtUsuario" layoutX="100.0" layoutY="9.0" prefHeight="25.0" prefWidth="166.0" promptText="User Name" />
+                <Label layoutX="25.0" layoutY="12.0" text="Nombre:">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Label>
+            </children>
+        </Pane>
+        <Pane layoutX="174.0" layoutY="111.0" prefHeight="42.0" prefWidth="280.0" style="-fx-border-color: black; -fx-border-radius: 2;">
+            <children>
+                <PasswordField fx:id="txtClave" layoutX="100.0" layoutY="9.0" prefHeight="25.0" prefWidth="166.0" promptText="User Password" />
+                <Label layoutX="14.0" layoutY="12.0" text="Contraseña:">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Label>
+            </children>
+        </Pane>
+        <Button fx:id="btnRegistrar" layoutX="22.0" layoutY="153.0" mnemonicParsing="false" onAction="#validarFormulario" prefHeight="30.0" prefWidth="132.0" style="-fx-background-color: black;" text="Guardar" textFill="WHITE">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Button>
+        <Pane layoutX="466.0" layoutY="14.0" prefHeight="42.0" prefWidth="280.0" style="-fx-border-color: black; -fx-border-radius: 2;">
+            <children>
+                <TextField fx:id="txtApellido" layoutX="100.0" layoutY="9.0" prefHeight="25.0" prefWidth="166.0" promptText="User Last Name" />
+                <Label layoutX="25.0" layoutY="12.0" text="Apellido:">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Label>
+            </children>
+        </Pane>
+        <Pane layoutX="174.0" layoutY="61.0" prefHeight="42.0" prefWidth="280.0" style="-fx-border-color: black; -fx-border-radius: 2;">
+            <children>
+                <TextField fx:id="txtTelefono" layoutX="100.0" layoutY="9.0" prefHeight="25.0" prefWidth="166.0" promptText="User Telephone" />
+                <Label layoutX="25.0" layoutY="12.0" text="Telefono:">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Label>
+            </children>
+        </Pane>
+        <Pane layoutX="466.0" layoutY="61.0" prefHeight="42.0" prefWidth="280.0" style="-fx-border-color: black; -fx-border-radius: 2;">
+            <children>
+                <TextField fx:id="txtGmail" layoutX="100.0" layoutY="9.0" prefHeight="25.0" prefWidth="166.0" promptText="User Gmail" />
+                <Label layoutX="25.0" layoutY="12.0" text="Correo:">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Label>
+            </children>
+        </Pane>
+      <Pane layoutX="466.0" layoutY="111.0" prefHeight="42.0" prefWidth="280.0" style="-fx-border-color: black; -fx-border-radius: 2;">
+         <children>
+            <Label layoutX="34.0" layoutY="11.0" text="Cargo:">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <ComboBox fx:id="cbxCargo" layoutX="103.0" layoutY="9.0" prefWidth="150.0" />
+         </children>
+      </Pane>
+      <TableView fx:id="tableView" layoutX="22.0" layoutY="193.0" prefHeight="200.0" prefWidth="726.0" />
+      <Label fx:id="lbnMsg" layoutX="174.0" layoutY="160.0" prefHeight="18.0" prefWidth="241.0" />
+      <Button fx:id="btnCancelar" layoutX="614.0" layoutY="154.0" mnemonicParsing="false" onAction="#cancelarAccion" prefHeight="30.0" prefWidth="132.0" style="-fx-background-color: black;" text="Cancelar" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <TextField fx:id="txtFiltroDato" layoutX="442.0" layoutY="157.0" promptText="🔍Buscar" />
+    </children>
+</AnchorPane>

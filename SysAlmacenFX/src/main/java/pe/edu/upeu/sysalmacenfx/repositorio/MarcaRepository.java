@@ -5,6 +5,6 @@ import org.springframework.stereotype.Repository;
 import pe.edu.upeu.sysalmacenfx.modelo.Marca;
 
 @Repository
-
 public interface MarcaRepository extends JpaRepository<Marca, Long> {
+
 }

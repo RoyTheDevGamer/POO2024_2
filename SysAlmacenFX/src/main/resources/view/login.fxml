@@ -7,60 +7,58 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane style="-fx-background-color: #2e354f;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pe.edu.upeu.sysalmacenfx.control.LoginController">
+<AnchorPane style="-fx-background-color: #2e354f;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pe.edu.upeu.sysalmacenfx.control.LoginController">
    <children>
-      <AnchorPane layoutX="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0">
+      <AnchorPane AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0">
          <children>
-            <Label layoutX="183.0" layoutY="17.0" text="Login SysAlmacen" textFill="#b5abd1" AnchorPane.bottomAnchor="17.400000000000002" AnchorPane.topAnchor="17.0">
+            <Circle fill="#e80808" layoutX="34.0" layoutY="33.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fill="#e8ff1f" layoutX="80.0" layoutY="33.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fill="#44ff1f" layoutX="126.0" layoutY="33.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+            <Label layoutX="182.0" layoutY="20.0" text="Login SysAlmacen" textFill="#b5abd1">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
                <padding>
-                  <Insets bottom="10.0" />
+                  <Insets right="20.0" />
                </padding>
             </Label>
-            <Circle fill="RED" layoutX="34.0" layoutY="31.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fill="#e3ff1f" layoutX="80.0" layoutY="31.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fill="#1fff63" layoutX="128.0" layoutY="31.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="5.0" layoutY="62.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0">
+      <AnchorPane layoutX="14.0" layoutY="70.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0">
          <children>
-            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="108.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="146.0" fitWidth="142.0" layoutX="117.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../img/icons.png" />
-               </image></ImageView>
+                  <Image url="@../img/secrecy-icon.png" />
+               </image>
+            </ImageView>
          </children></AnchorPane>
-      <AnchorPane layoutX="14.0" layoutY="213.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0">
+      <AnchorPane layoutX="14.0" layoutY="216.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0">
          <children>
-            <AnchorPane layoutX="14.0" layoutY="-1.0" style="-fx-border-color: #b5abd1; -fx-border-radius: 2;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-               <children>
-                  <TextField fx:id="txtUsuario" layoutX="113.0" layoutY="15.0" prefHeight="26.0" prefWidth="222.0" />
-                  <Label layoutX="29.0" layoutY="14.0" text="Usuario" textFill="#b5abd1">
-                     <font>
-                        <Font size="18.0" />
-                     </font></Label>
-               </children>
+            <AnchorPane style="-fx-border-color: #b5abd1; -fx-border-radius: 2;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                <padding>
-                  <Insets bottom="15.0" />
+                  <Insets bottom="10.0" left="10.0" />
                </padding>
-            </AnchorPane>
-            <AnchorPane layoutY="62.0" style="-fx-border-color: #b5abd1; -fx-border-radius: 2;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                <children>
-                  <PasswordField fx:id="txtClave" layoutX="117.0" layoutY="14.0" prefHeight="26.0" prefWidth="222.0" />
-                  <Label layoutX="37.0" layoutY="13.0" text="Clave" textFill="#b5abd1">
-                     <font>
-                        <Font size="18.0" />
-                     </font></Label>
+                  <Label layoutX="27.0" layoutY="28.0" prefHeight="17.0" prefWidth="75.0" text="Usuario:" textFill="#b5abd1" />
+                  <TextField fx:id="txtUsuario" layoutX="104.0" layoutY="24.0" prefHeight="25.0" prefWidth="206.0" />
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </AnchorPane>
+            <AnchorPane layoutY="65.0" style="-fx-border-color: #b5abd1; -fx-border-radius: 2;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+               <children>
+                  <Label layoutX="25.0" layoutY="34.0" text="Clave:" textFill="#b5abd1" />
+                  <PasswordField fx:id="txtClave" layoutX="104.0" layoutY="30.0" prefHeight="25.0" prefWidth="206.0" />
                </children>
                <padding>
-                  <Insets bottom="15.0" />
+                  <Insets bottom="10.0" />
                </padding>
             </AnchorPane>
          </children></AnchorPane>
-      <AnchorPane layoutX="5.0" layoutY="349.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <AnchorPane layoutX="5.0" layoutY="360.0" prefHeight="61.0" style="-fx-background-color: yellow;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
-            <Button fx:id="btnIngresar" onAction="#login" layoutX="5.0" layoutY="-1.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="356.0" style="-fx-background-color: #43bb73;" text="Ingresar" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+            <Button fx:id="btnIngresar" onAction="#login" layoutX="77.0" layoutY="14.0" mnemonicParsing="false" style="-fx-background-color: #43bb73;" text="Ingresar" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
          </children></AnchorPane>
    </children>
 </AnchorPane>

@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="miContenedor" prefHeight="400.0" prefWidth="694.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pe.edu.upeu.demoldfx.control.PlatosController">
+<AnchorPane fx:id="miContenedor" prefHeight="400.0" prefWidth="770.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pe.edu.upeu.demoldfx.control.PlatosController">
    <children>
       <Pane prefHeight="400.0" prefWidth="191.0" style="-fx-background-color: #a0a2a1;">
          <children>
@@ -42,7 +42,7 @@
               </rowConstraints>
                <children>
                   <Label maxWidth="1.7976931348623157E308" text="Nombre:" GridPane.columnSpan="2" />
-                  <TextField fx:id="txtNombrePlatos" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.columnSpan="3">
+                  <TextField fx:id="txtNombrePlatos" maxWidth="1.7976931348623157E308" promptText="New Name" GridPane.columnIndex="1" GridPane.columnSpan="3">
                      <GridPane.margin>
                         <Insets left="15.0" right="15.0" />
                      </GridPane.margin>
@@ -57,13 +57,13 @@
                         <Insets left="5.0" right="5.0" />
                      </GridPane.margin></Button>
                   <Label text="Buscar Platos:" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="8" />
-                  <TextField fx:id="txtFiltroDato" prefHeight="26.0" prefWidth="146.0" GridPane.columnSpan="4" GridPane.rowIndex="9">
+                  <TextField fx:id="txtFiltroDato" prefHeight="26.0" prefWidth="146.0" promptText="Look For Dishes." GridPane.columnSpan="4" GridPane.rowIndex="9">
                      <GridPane.margin>
                         <Insets left="15.0" right="15.0" />
                      </GridPane.margin>
                   </TextField>
                   <Label fx:id="lbnMsg" prefHeight="86.0" prefWidth="205.0" GridPane.columnSpan="4" GridPane.rowIndex="11" GridPane.rowSpan="2" />
-                  <TextField fx:id="txtPrecio" layoutX="25.0" layoutY="37.0" maxWidth="1.7976931348623157E308" prefHeight="26.0" prefWidth="78.0" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="2">
+                  <TextField fx:id="txtPrecio" layoutX="25.0" layoutY="37.0" maxWidth="1.7976931348623157E308" prefHeight="26.0" prefWidth="78.0" promptText="S/. 00.00" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="2">
                      <GridPane.margin>
                         <Insets left="15.0" right="15.0" />
                      </GridPane.margin>
@@ -74,7 +74,7 @@
                      </GridPane.margin>
                   </ComboBox>
                   <Label maxWidth="1.7976931348623157E308" text="Categoria:" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="3" />
-                  <TextField fx:id="txtDescripcion" layoutX="70.0" layoutY="11.0" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="1">
+                  <TextField fx:id="txtDescripcion" layoutX="70.0" layoutY="11.0" maxWidth="1.7976931348623157E308" promptText="Description" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="1">
                      <GridPane.margin>
                         <Insets left="15.0" right="15.0" />
                      </GridPane.margin>
@@ -84,6 +84,6 @@
             </GridPane>
          </children>
       </Pane>
-      <TableView fx:id="tableView" layoutX="200.0" layoutY="6.0" prefHeight="384.0" prefWidth="482.0" />
+      <TableView fx:id="tableView" layoutX="200.0" layoutY="6.0" prefHeight="384.0" prefWidth="549.0" />
    </children>
 </AnchorPane>

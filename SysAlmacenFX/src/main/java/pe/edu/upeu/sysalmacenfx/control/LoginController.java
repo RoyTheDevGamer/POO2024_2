@@ -25,18 +25,22 @@ import pe.edu.upeu.sysalmacenfx.servicio.UsuarioService;
 import java.io.IOException;
 
 @Component
-
 public class LoginController {
-    @Autowired
-    private ApplicationContext context;
+
     @Autowired
     UsuarioService us;
+
+    @Autowired
+    private ApplicationContext context;
+
     @FXML
     TextField txtUsuario;
     @FXML
     PasswordField txtClave;
     @FXML
     Button btnIngresar;
+
+
 
     @FXML
     public void login(ActionEvent event) throws IOException {
@@ -48,6 +52,7 @@ public class LoginController {
                 SessionManager.getInstance().setUserId(usu.getIdUsuario());
                 SessionManager.getInstance().setUserName(usu.getUser());
                 SessionManager.getInstance().setNombrePerfil(usu.getIdPerfil().getNombre());
+
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/guimainfx.fxml"));
                 loader.setControllerFactory(context::getBean);
                 Parent mainRoot = loader.load();
@@ -75,7 +80,9 @@ public class LoginController {
             }
         }catch (Exception e){
             System.out.println(e.getMessage());
-        }
-    }
+        } }
+
+
+
 
 }

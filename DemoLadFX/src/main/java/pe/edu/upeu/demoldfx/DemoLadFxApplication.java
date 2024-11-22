@@ -27,7 +27,7 @@ public class DemoLadFxApplication extends Application {
 		SpringApplicationBuilder builder = new SpringApplicationBuilder(DemoLadFxApplication.class);
 		builder.application().setWebApplicationType(WebApplicationType.NONE);
 		configurableApplicationContext = builder.run(getParameters().getRaw().toArray(new String[0]));
-		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/platos.fxml"));
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/login.fxml"));
 		fxmlLoader.setControllerFactory(configurableApplicationContext::getBean);
 		parent= fxmlLoader.load();
 	}
@@ -36,7 +36,7 @@ public class DemoLadFxApplication extends Application {
 		Scene scene = new Scene(parent);
 		scene.getStylesheets().add(getClass().getResource("/css/styles.css").toExternalForm());
 		stage.setScene(scene);
-		stage.setTitle("Platos Spring Java-FX");
+		stage.setTitle("Login Restaurant By Roy");
 		stage.setResizable(false);
 		stage.show();
 	}

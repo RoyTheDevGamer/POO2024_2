@@ -5,33 +5,22 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import org.springframework.boot.CommandLineRunner;
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.context.annotation.Bean;
-//import pe.edu.upeu.sysalmacenfx.servicio.MainX;
-import pe.edu.upeu.sysalmacenfx.pruebas.MainX2;
 
 @SpringBootApplication
 public class SysAlmacenFxApplication extends Application {
+
 	private static ConfigurableApplicationContext configurableApplicationContext;
 	private Parent parent;
+
+
 	public static void main(String[] args) {
-		//SpringApplication.run(SysAlmacenFxApplication.class,args);
+		//SpringApplication.run(SysAlmacenFxApplication.class, args);
 		launch(args);
 	}
-
-	/*@Bean
-	public CommandLineRunner run(ApplicationContext context){
-	return args -> {
-	 MainX2 mx = context.getBean(MainX2.class);
-	 mx.menu();
-     };
-	}*/
 
 	@Override
 	public void init() throws Exception {
@@ -55,5 +44,17 @@ public class SysAlmacenFxApplication extends Application {
 	public void stop() throws Exception {
 		configurableApplicationContext.close();
 	}
+
+
+	/*@Bean
+	public CommandLineRunner run(ApplicationContext context) { return args -> {
+		//mx = context.getBean(MainX.class);
+		MainY mx = context.getBean(MainY.class);
+		mx.menu();
+		};
+	}*/
+
+
+
 
 }

@@ -9,28 +9,25 @@ import pe.edu.upeu.sysalmacenfx.repositorio.MarcaRepository;
 
 import java.util.ArrayList;
 import java.util.List;
-@Service
 
+@Service
 public class MarcaService {
+
     @Autowired
     MarcaRepository repo;
-    //C
     public Marca save(Marca to){
         return repo.save(to);
     }
-    //R
     public List<Marca> list(){
         return repo.findAll();
     }
-    //U
     public Marca update(Marca to, Long id){
         try {
             Marca toe=repo.findById(id).get();
-            if (toe!=null){
+            if(toe!=null){
                 toe.setNombre(to.getNombre());
             }
             return repo.save(toe);
-
         }catch (Exception e){
             System.out.println("Error: "+ e.getMessage());
         }
@@ -40,20 +37,17 @@ public class MarcaService {
     public Marca update(Marca to){
         return repo.save(to);
     }
-
-    //D
     public void delete(Long id){
         repo.deleteById(id);
     }
-
-
     public Marca searchById(Long id){
         return repo.findById(id).orElse(null);
     }
-    public List<ComboBoxOption> listarComboBox(){
+
+    public List<ComboBoxOption> listarCombobox(){
         List<ComboBoxOption> listar=new ArrayList<>();
         ComboBoxOption cb;
-        for (Marca cate : repo.findAll()) {
+        for(Marca cate : repo.findAll()) {
             cb=new ComboBoxOption();
             cb.setKey(String.valueOf(cate.getIdMarca()));
             cb.setValue(cate.getNombre());
@@ -61,5 +55,4 @@ public class MarcaService {
         }
         return listar;
     }
-
 }

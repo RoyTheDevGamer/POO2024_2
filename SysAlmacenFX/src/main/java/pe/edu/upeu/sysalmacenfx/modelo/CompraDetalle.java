@@ -1,4 +1,5 @@
 package pe.edu.upeu.sysalmacenfx.modelo;
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -24,11 +25,12 @@ public class CompraDetalle {
     private Double subtotal;
     @ManyToOne
     @JoinColumn(name = "id_compra", referencedColumnName = "id_compra",
-            nullable = false, foreignKey = @ForeignKey(name = "FK_COMPRA_COMPRADETALLE"))
+            nullable = false, foreignKey = @ForeignKey(name =
+            "FK_COMPRA_COMPRADETALLE"))
     private Compra compra;
     @ManyToOne
     @JoinColumn(name = "id_producto", referencedColumnName = "id_producto",
-            nullable = false, foreignKey = @ForeignKey(name = "FK_PRODUCTO_COMPRADETALLE"))
+            nullable = false, foreignKey = @ForeignKey(name =
+            "FK_PRODUCTO_COMPRADETALLE"))
     private Producto producto;
 }
-
