@@ -1,10 +1,14 @@
 package pe.edu.upeu.demoldfx.servicio;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pe.edu.upeu.demoldfx.dto.ModeloDataAutocomplet;
 import pe.edu.upeu.demoldfx.modelo.Platos;
 import pe.edu.upeu.demoldfx.repositorio.PlatosRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -12,6 +16,7 @@ import java.util.List;
 public class PlatosService {
     @Autowired
     PlatosRepository repo;
+
     //C
     public Platos save(Platos to){
         return repo.save(to);
@@ -26,7 +31,7 @@ public class PlatosService {
             Platos toe=repo.findById(id).get();
             if (toe!=null){
                 toe.setNombre(to.getNombre());
-                toe.setDescripcion(to.getDescripcion());
+
             }
             return repo.save(toe);
 
@@ -48,5 +53,6 @@ public class PlatosService {
     public Platos searchById(Long id){
         return repo.findById(id).orElse(null);
     }
+
 
 }

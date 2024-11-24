@@ -64,7 +64,7 @@ public class MenuController {
                 usuarioMenu.setVisible(false);
                 permisosMenu.setVisible(false);
                 break;
-            case "2":
+            case "2": //admin
                 panelMenu.setVisible(true);
                 mesasMenu.setVisible(true);
                 platosMenu.setVisible(true);

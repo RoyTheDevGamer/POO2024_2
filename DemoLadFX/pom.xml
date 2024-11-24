@@ -166,6 +166,13 @@
 			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
 
+
+		<dependency>
+			<groupId>org.controlsfx</groupId>
+			<artifactId>controlsfx</artifactId>
+			<version>11.1.0</version>  <!-- O la última versión disponible -->
+		</dependency>
+
 	</dependencies>
 
 	<build>

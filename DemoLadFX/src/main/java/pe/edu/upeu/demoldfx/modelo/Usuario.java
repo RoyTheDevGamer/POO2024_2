@@ -33,8 +33,8 @@ public class Usuario {
     @Pattern(regexp = "\\d{9}", message = "El teléfono debe tener 9 dígitos")
     private String telefono;
 
-    @Column(name = "email", nullable = false, unique = true, length = 100)
-    private String email;
+    @Column(name = "dni", nullable = false, unique = true, length = 100)
+    private String dni;
 
     @Column(name = "clave", nullable = false, length = 100)
     private String clave;

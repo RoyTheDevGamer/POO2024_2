@@ -75,7 +75,7 @@ public class PedidosController {
         LinkedHashMap<String, ColumnInfo> columns = new LinkedHashMap<>();
         columns.put("ID", new ColumnInfo("idPlatos", 20.0));
         columns.put("Nombre Del Plato", new ColumnInfo("nombre", 150.0));
-        columns.put("Descripcion", new ColumnInfo("descripcion", 100.0));
+
         columns.put("Precio", new ColumnInfo("precio", 80.0));
         columns.put("Categoria", new ColumnInfo("Categoria.nombre", 100.0));
 
@@ -86,7 +86,7 @@ public class PedidosController {
         LinkedHashMap<String, ColumnInfo> columns2 = new LinkedHashMap<>();
         columns2.put("ID", new ColumnInfo("idPlatos", 20.0));
         columns2.put("Nombre Del Plato", new ColumnInfo("nombre", 150.0));
-        columns2.put("Descripcion", new ColumnInfo("descripcion", 100.0));
+
         columns2.put("Precio", new ColumnInfo("precio", 80.0));
         columns2.put("Categoria", new ColumnInfo("Categoria.nombre", 100.0));
 
@@ -150,77 +150,38 @@ public class PedidosController {
     }
 
 
-//    @FXML
-//    public void realizarPedido() {
-//        if (!platosSeleccionados.isEmpty()) {
-//            try {
-//                for (Platos plato : platosSeleccionados) {
-//                    // Crear un objeto de tipo Pedidos
-//                    Pedidos pedido = new Pedidos();
-//                    pedido.setNombre(plato.getNombre());
-//                    pedido.setDescripcion(plato.getDescripcion());
-//                    pedido.setPrecio(plato.getPrecio());
-//                    pedido.setCategoria(plato.getCategoria());  // Asegúrate de que la categoría esté bien definida
-//
-//                    // Guardar el pedido en la base de datos
-//                    Pedidos pedidoGuardado = pedidosService.save(pedido);
-//                    if (pedidoGuardado != null) {
-//                        System.out.println("Pedido guardado con éxito: " + pedidoGuardado.getNombre());
-//                    } else {
-//                        System.out.println("Error al guardar el pedido: " + plato.getNombre());
-//                    }
-//                }
-//
-//                // Limpiar la lista de platos seleccionados y Tabla2
-//                platosSeleccionados.clear();
-//                Tabla2.getItems().clear();
-//                System.out.println("Pedidos guardados con éxito.");
-//
-//            } catch (Exception e) {
-//                System.out.println("Error al pedir platos: " + e.getMessage());
-//            }
-//        } else {
-//            System.out.println("Por favor, selecciona platos para pedir.");
-//        }
-//    }
-@FXML
-public void realizarPedido() {
-    if (!platosSeleccionados.isEmpty()) {
-        try {
-            for (Platos plato : platosSeleccionados) {
-                // Verificar si la descripción del plato es nula o vacía antes de guardarlo
-                String descripcion = plato.getDescripcion();
-                if (descripcion == null || descripcion.isEmpty()) {
-                    // Si la descripción es nula o vacía, asignamos un valor predeterminado
-                    descripcion = "Descripción no disponible";  // Puedes cambiar este valor predeterminado si lo deseas
+    @FXML
+    public void realizarPedido() {
+        if (!platosSeleccionados.isEmpty()) {
+            try {
+                for (Platos plato : platosSeleccionados) {
+                    // Crear un objeto de tipo Pedidos
+                    Pedidos pedido = new Pedidos();
+                    pedido.setNombre(plato.getNombre());
+
+                    pedido.setPrecio(plato.getPrecio());
+                    pedido.setCategoria(plato.getCategoria());  // Asegúrate de que la categoría esté bien definida
+
+                    // Guardar el pedido en la base de datos
+                    Pedidos pedidoGuardado = pedidosService.save(pedido);
+                    if (pedidoGuardado != null) {
+                        System.out.println("Pedido guardado con éxito: " + pedidoGuardado.getNombre());
+                    } else {
+                        System.out.println("Error al guardar el pedido: " + plato.getNombre());
+                    }
                 }
 
-                // Crear un objeto de tipo Pedidos
-                Pedidos pedido = new Pedidos();
-                pedido.setNombre(plato.getNombre());
-                pedido.setDescripcion(descripcion);  // Aseguramos que la descripción no sea nula
-                pedido.setPrecio(plato.getPrecio());
-                pedido.setCategoria(plato.getCategoria());  // Asegúrate de que la categoría esté bien definida
+                // Limpiar la lista de platos seleccionados y Tabla2
+                platosSeleccionados.clear();
+                Tabla2.getItems().clear();
+                System.out.println("Pedidos guardados con éxito.");
 
-                // Guardar el pedido en la base de datos
-                Pedidos pedidoGuardado = pedidosService.save(pedido);
-                if (pedidoGuardado != null) {
-                    System.out.println("Pedido guardado con éxito: " + pedidoGuardado.getNombre());
-                } else {
-                    System.out.println("Error al guardar el pedido: " + plato.getNombre());
-                }
+            } catch (Exception e) {
+                System.out.println("Error al pedir platos: " + e.getMessage());
             }
-
-            // Limpiar la lista de platos seleccionados y Tabla2
-            platosSeleccionados.clear();
-            Tabla2.getItems().clear();
-            System.out.println("Pedidos guardados con éxito.");
-
-        } catch (Exception e) {
-            System.out.println("Error al pedir platos: " + e.getMessage());
+        } else {
+            System.out.println("Por favor, selecciona platos para pedir.");
         }
-    } else {
-        System.out.println("Por favor, selecciona platos para pedir.");
     }
-}
+
 }

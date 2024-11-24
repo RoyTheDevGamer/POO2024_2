@@ -47,7 +47,7 @@
                         <Insets left="15.0" right="15.0" />
                      </GridPane.margin>
                   </TextField>
-                  <Label maxWidth="1.7976931348623157E308" prefHeight="18.0" prefWidth="61.0" text="Precio:" GridPane.rowIndex="2" />
+                  <Label maxWidth="1.7976931348623157E308" prefHeight="18.0" prefWidth="61.0" text="Precio:" GridPane.rowIndex="1" />
                   <Button fx:id="btnGuardar" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#validarFormulario" text="Guardar" GridPane.columnSpan="2" GridPane.rowIndex="6">
                      <GridPane.margin>
                         <Insets left="5.0" right="5.0" />
@@ -63,7 +63,7 @@
                      </GridPane.margin>
                   </TextField>
                   <Label fx:id="lbnMsg" prefHeight="86.0" prefWidth="205.0" GridPane.columnSpan="4" GridPane.rowIndex="11" GridPane.rowSpan="2" />
-                  <TextField fx:id="txtPrecio" layoutX="25.0" layoutY="37.0" maxWidth="1.7976931348623157E308" prefHeight="26.0" prefWidth="78.0" promptText="S/. 00.00" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="2">
+                  <TextField fx:id="txtPrecio" layoutX="25.0" layoutY="37.0" maxWidth="1.7976931348623157E308" prefHeight="26.0" prefWidth="78.0" promptText="S/. 00.00" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="1">
                      <GridPane.margin>
                         <Insets left="15.0" right="15.0" />
                      </GridPane.margin>
@@ -74,12 +74,6 @@
                      </GridPane.margin>
                   </ComboBox>
                   <Label maxWidth="1.7976931348623157E308" text="Categoria:" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="3" />
-                  <TextField fx:id="txtDescripcion" layoutX="70.0" layoutY="11.0" maxWidth="1.7976931348623157E308" promptText="Description" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="1">
-                     <GridPane.margin>
-                        <Insets left="15.0" right="15.0" />
-                     </GridPane.margin>
-                  </TextField>
-                  <Label text="Descrip:" GridPane.rowIndex="1" />
                </children>
             </GridPane>
          </children>

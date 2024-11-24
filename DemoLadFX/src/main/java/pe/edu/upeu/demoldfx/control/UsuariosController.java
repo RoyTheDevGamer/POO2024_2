@@ -34,7 +34,7 @@ import java.util.stream.Collectors;
 public class UsuariosController {
 
     @FXML
-    private TextField txtUsuario, txtApellido, txtTelefono, txtGmail, txtClave, txtFiltroDato;
+    private TextField txtUsuario, txtApellido, txtTelefono, txtDni, txtClave, txtFiltroDato;
     @FXML
     private ComboBox<ComboBoxOption> cbxCargo; // ComboBox para el perfil
     @FXML
@@ -92,7 +92,7 @@ public class UsuariosController {
         columns.put("Apellido", new ColumnInfo("apellido", 150.0));
         columns.put("Clave", new ColumnInfo("clave", 20.0));
         columns.put("Telefono", new ColumnInfo("telefono", 100.0));
-        columns.put("Email", new ColumnInfo("email", 150.0));
+        columns.put("DNI", new ColumnInfo("dni", 100.0));
         columns.put("Cargo", new ColumnInfo("perfil.nombre", 100.0));
 
         // Acción de actualizar
@@ -142,7 +142,7 @@ public class UsuariosController {
                         return usuario.getUser().toLowerCase().contains(lowerCaseFilter) ||
                                 usuario.getApellido().toLowerCase().contains(lowerCaseFilter) ||
                                 usuario.getTelefono().toLowerCase().contains(lowerCaseFilter) ||
-                                usuario.getEmail().toLowerCase().contains(lowerCaseFilter) ||
+                                usuario.getDni().toLowerCase().contains(lowerCaseFilter) ||
                                 usuario.getPerfil().getNombre().toLowerCase().contains(lowerCaseFilter);
                     })
                     .collect(Collectors.toList());
@@ -156,7 +156,7 @@ public class UsuariosController {
         txtUsuario.clear();
         txtApellido.clear();
         txtTelefono.clear();
-        txtGmail.clear();
+        txtDni.clear();
         txtClave.clear();
         cbxCargo.getSelectionModel().clearSelection();
         idUsuarioCE = 0L;
@@ -166,7 +166,7 @@ public class UsuariosController {
         txtApellido.getStyleClass().remove("text-field-error");
         txtClave.getStyleClass().remove("text-field-error");
         txtTelefono.getStyleClass().remove("text-field-error");
-        txtGmail.getStyleClass().remove("text-field-error");
+        txtDni.getStyleClass().remove("text-field-error");
         cbxCargo.getStyleClass().remove("text-field-error");
     }
 
@@ -187,9 +187,9 @@ public class UsuariosController {
                 erroresOrdenados.put("clave", violacion.getMessage());
                 txtClave.getStyleClass().add("text-field-error");
             }
-            else if (campo.equals("email")) {
-                erroresOrdenados.put("email", violacion.getMessage());
-                txtGmail.getStyleClass().add("text-field-error");
+            else if (campo.equals("dni")) {
+                erroresOrdenados.put("dni", violacion.getMessage());
+                txtDni.getStyleClass().add("text-field-error");
             }else if (campo.equals("perfil")) {
                 erroresOrdenados.put("perfil", violacion.getMessage());
                 cbxCargo.getStyleClass().add("text-field-error");
@@ -216,7 +216,7 @@ public class UsuariosController {
         formulario.setUser(txtUsuario.getText());
         formulario.setApellido(txtApellido.getText());
         formulario.setTelefono(txtTelefono.getText());
-        formulario.setEmail(txtGmail.getText());
+        formulario.setDni(txtDni.getText());
         formulario.setClave(txtClave.getText());
         String idxH=cbxCargo.getSelectionModel().getSelectedItem()==null?"0":cbxCargo.getSelectionModel().getSelectedItem().getKey();
         formulario.setPerfil(perfilService.searchById(Long.parseLong(idxH)));
@@ -255,7 +255,7 @@ public class UsuariosController {
 
     public void clearForm(){
         txtUsuario.setText("");
-        txtGmail.setText("");
+        txtDni.setText("");
         txtTelefono.setText("");
         txtClave.setText("");
         txtApellido.setText("");
@@ -269,7 +269,7 @@ public class UsuariosController {
         txtUsuario.setText(usuario.getUser());
         txtApellido.setText(usuario.getApellido());
         txtTelefono.setText(usuario.getTelefono());
-        txtGmail.setText(usuario.getEmail());
+        txtDni.setText(usuario.getDni());
         txtClave.setText(usuario.getClave());
         cbxCargo.getSelectionModel().select(
                 cbxCargo.getItems().stream()

@@ -35,7 +35,7 @@ import java.util.stream.Collectors;
 
 public class PlatosController {
     @FXML
-    TextField txtNombrePlatos, txtPrecio,txtFiltroDato,txtDescripcion;
+    TextField txtNombrePlatos, txtPrecio,txtFiltroDato;
     @FXML
     ComboBox<ComboBoxOption> cbxCategoria;
     @FXML
@@ -85,7 +85,7 @@ public class PlatosController {
         LinkedHashMap<String, ColumnInfo> columns = new LinkedHashMap<>();
         columns.put("ID",new ColumnInfo("idPlatos",20.0));
         columns.put("Nombre Del Plato",new ColumnInfo("nombre",150.0));
-        columns.put("Descripcion",new ColumnInfo("descripcion",100.0));
+
         columns.put("Precio",new ColumnInfo("precio",80.0));
         columns.put("Categoria",new ColumnInfo("Categoria.nombre",100.0));
 
@@ -126,14 +126,14 @@ public class PlatosController {
     public void limpiarError(){
         txtNombrePlatos.getStyleClass().remove("text-field-error");
         txtPrecio.getStyleClass().remove("text-field-error");
-        txtDescripcion.getStyleClass().remove("text-field-error");
+
         cbxCategoria.getStyleClass().remove("text-field-error");
     }
 
     public void clearForm(){
         txtNombrePlatos.setText("");
         txtPrecio.setText("");
-        txtDescripcion.setText("");
+
         cbxCategoria.getSelectionModel().select(null);
         idPlatosCE=0L;
         limpiarError();
@@ -159,9 +159,6 @@ public class PlatosController {
             }else if (campo.equals("categoria")) {
                 erroresOrdenados.put("categoria", violacion.getMessage());
                 cbxCategoria.getStyleClass().add("text-field-error");
-            }else if (campo.equals("descripcion")) {
-                erroresOrdenados.put("descripcion", violacion.getMessage());
-                txtDescripcion.getStyleClass().add("text-field-error");
             }
         }
         // Mostrar el primer error en el orden deseado
@@ -175,7 +172,7 @@ public class PlatosController {
     public void validarFormulario() {
         formulario = new Platos();
         formulario.setNombre(txtNombrePlatos.getText());
-        formulario.setDescripcion(txtDescripcion.getText());
+
         formulario.setPrecio(Double.parseDouble(txtPrecio.getText()==""?"0":txtPrecio.getText()));
         String idxH=cbxCategoria.getSelectionModel().getSelectedItem()==null?"0":cbxCategoria.getSelectionModel().getSelectedItem().getKey();
         formulario.setCategoria(cs.searchById(Long.parseLong(idxH)));
@@ -238,7 +235,7 @@ public class PlatosController {
 
     public void editForm(Platos platos){
         txtNombrePlatos.setText(platos.getNombre());
-        txtDescripcion.setText(platos.getDescripcion());
+
         txtPrecio.setText(platos.getPrecio().toString());
         // Seleccionar el ítem en cbxMarca según el ID de Marca
         cbxCategoria.getSelectionModel().select(

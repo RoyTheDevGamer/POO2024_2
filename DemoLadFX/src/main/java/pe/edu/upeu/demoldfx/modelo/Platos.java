@@ -25,9 +25,7 @@ public class Platos {
     @Size(min = 2, max = 30, message = "El nombre debe tener entre 2 y 30 caracteres")
     @Column(name = "nombre_platos", nullable = false, length = 30)
     private String nombre;
-    @Size(min = 2, max = 60, message = "La descripcion debe tener entre 2 y 60 caracteres")
-    @Column(name = "decripcion_platos", nullable = false, length = 60)
-    private String descripcion;
+
     @PositiveOrZero(message = "El Precio Anterior debe ser positivo o cero")
     @Column(name = "precio_platos", nullable = false, length = 10)
     private Double precio;

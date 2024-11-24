@@ -23,7 +23,10 @@
             <items>
                <MenuItem mnemonicParsing="false" onAction="#usuario" text="Reg Usuarios" />
             </items></Menu>
-         <Menu fx:id="permisosMenu" text="Venta" />
+         <Menu fx:id="permisosMenu" text="Venta">
+            <items>
+               <MenuItem mnemonicParsing="false" onAction="#venta" text="Reg Venta" />
+            </items></Menu>
          <Menu fx:id="archivoMenu" text="Opciones">
             <MenuItem onAction="#cerrarSesion" text="Cerrar Sesión" />
             <MenuItem onAction="#salir" text="Salir" />
