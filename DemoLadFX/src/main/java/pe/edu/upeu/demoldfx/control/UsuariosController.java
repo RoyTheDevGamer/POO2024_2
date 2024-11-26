@@ -14,6 +14,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 import pe.edu.upeu.demoldfx.componente.ColumnInfo;
 import pe.edu.upeu.demoldfx.componente.TableViewHelper;
@@ -50,6 +51,9 @@ public class UsuariosController {
     @Autowired
     private PerfilService perfilService;
     private Validator validator;
+
+    private BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+
 
     ObservableList<Usuario> listarUsuarios;
     Usuario formulario;
@@ -217,9 +221,12 @@ public class UsuariosController {
         formulario.setApellido(txtApellido.getText());
         formulario.setTelefono(txtTelefono.getText());
         formulario.setDni(txtDni.getText());
-        formulario.setClave(txtClave.getText());
+        //formulario.setClave(txtClave.getText());
         String idxH=cbxCargo.getSelectionModel().getSelectedItem()==null?"0":cbxCargo.getSelectionModel().getSelectedItem().getKey();
         formulario.setPerfil(perfilService.searchById(Long.parseLong(idxH)));
+
+        String claveEncriptada = passwordEncoder.encode(txtClave.getText());
+        formulario.setClave(claveEncriptada);
 
         Set<ConstraintViolation<Usuario>> violaciones = validator.validate(formulario);
         // Si prefieres ordenarlo por el nombre de la propiedad que violó la restricción, podrías usar:

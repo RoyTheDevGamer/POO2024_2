@@ -127,22 +127,28 @@ public class MenuController {
         alerta.showAndWait();
     }
 
-    // Cerrar sesión
+     //Cerrar sesión
     @FXML
     private void cerrarSesion() {
+        System.out.println("Btn de cerrar cesion presionado");
         try {
+            // Cargar el archivo FXML de login
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/login.fxml"));
+            Parent root = loader.load(); // Carga la vista de login
 
-            Parent root = loader.load();
-
+            // Obtener la ventana actual (Stage)
             Stage stage = (Stage) nombreField.getScene().getWindow();
-            stage.setScene(new Scene(root));
-            stage.setTitle("Inicio de Sesión");
-            stage.show();
+
+            // Cambiar la escena por la vista de login
+            stage.setScene(new Scene(root)); // Establecer la nueva escena
+            stage.setTitle("Inicio de Sesión"); // Título para la nueva ventana
+            stage.show(); // Mostrar la nueva escena
         } catch (IOException e) {
-            e.printStackTrace();
+            e.printStackTrace(); // En caso de error, imprime la excepción
         }
+
     }
+
 
     // Salir de la aplicación
     @FXML

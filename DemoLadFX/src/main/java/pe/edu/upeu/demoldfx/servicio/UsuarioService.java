@@ -3,6 +3,7 @@ package pe.edu.upeu.demoldfx.servicio;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import pe.edu.upeu.demoldfx.dto.ModeloDataAutocomplet;
 import pe.edu.upeu.demoldfx.modelo.Pedidos;
@@ -18,9 +19,13 @@ public class UsuarioService {
 
     @Autowired
     UsuarioRepository repo;
+    private BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+
     Logger logger= LoggerFactory.getLogger(UsuarioService.class);
 
     public Usuario save(Usuario to) {
+//        String encodedPassword = passwordEncoder.encode(to.getClave());
+//        to.setClave(encodedPassword);
         return repo.save(to);
     }
 
@@ -32,6 +37,8 @@ public class UsuarioService {
         try {
             Usuario toe = repo.findById(id).orElse(null);
             if (toe != null) {
+//                String encodedPassword = passwordEncoder.encode(to.getClave());
+//                toe.setClave(encodedPassword);
                 toe.setClave(to.getClave());
                 return repo.save(toe);
             }
@@ -52,9 +59,29 @@ public class UsuarioService {
         return repo.findById(id).orElse(null);
     }
 
-    public Usuario loginUsuario(String user, String clave) {
-        return repo.loginUsuario(user, clave);
-    }
+//    public Usuario loginUsuario(String user, String clave) {
+//        Usuario usuario = repo.loginUsuario(user, clave);
+//        // Verificamos si la contraseña coincide con la encriptada
+//        if (usuario != null && passwordEncoder.matches(clave, usuario.getClave())) {
+//            return usuario;
+//        }
+//        return null;
+//    }
+public Usuario loginUsuario(String user, String clave) {
+        Usuario usuario = repo.findByUser(user);
+
+        if (usuario != null){
+            boolean contraseñaCorrecta = passwordEncoder.matches(clave, usuario.getClave());
+            if (contraseñaCorrecta){
+                return usuario;
+            } else {
+                return null;
+            }
+        } else {
+             return null;
+        }
+    //return repo.loginUsuario(user, clave);
+}
 
     public List<ModeloDataAutocomplet> listAutoCompletProducto() {
         List<ModeloDataAutocomplet> listarProducto = new ArrayList<>();

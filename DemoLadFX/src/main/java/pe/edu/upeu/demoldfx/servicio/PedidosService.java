@@ -1,5 +1,6 @@
 package pe.edu.upeu.demoldfx.servicio;
 
+import jakarta.transaction.Transactional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,6 +70,11 @@ public class PedidosService {
             logger.error("Error al realizar la busqueda", e);
         }
         return listarProducto;
+    }
+
+    @Transactional
+    public void deleteAllP() {
+        repo.deleteAll(); // Este método elimina todos los registros de la tabla
     }
 
 }

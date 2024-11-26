@@ -42,6 +42,11 @@ public class VentCarritoService {
         return repo.findById(id).orElse(null);
     }
 
+    @Transactional
+    public void deleteAll() {
+        repo.deleteAll(); // Este método elimina todos los registros de la tabla
+    }
+
 //    public List<VentCarrito> listaCarritoCliente(String dni) {
 //        return repo.listaCarritoCliente(dni);
 //    }

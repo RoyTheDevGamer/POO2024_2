@@ -39,5 +39,8 @@
       </StackPane>
 
    </center>
+   <bottom>
+      <TextField fx:id="nombreField" disable="true" BorderPane.alignment="CENTER" />
+   </bottom>
 
 </BorderPane>

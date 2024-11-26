@@ -185,7 +185,7 @@
                   <Insets left="20.0" right="20.0" />
                </GridPane.margin>
             </TextField>
-            <Button fx:id="btnRegVenta" mnemonicParsing="false" prefHeight="126.0" prefWidth="152.0" text="R. Venta" GridPane.columnIndex="6" GridPane.rowSpan="2">
+            <Button fx:id="btnRegVenta" mnemonicParsing="false" onAction="#registrarVenta" prefHeight="126.0" prefWidth="152.0" text="R. Venta" GridPane.columnIndex="6" GridPane.rowSpan="2">
                <GridPane.margin>
                   <Insets right="20.0" />
                </GridPane.margin>

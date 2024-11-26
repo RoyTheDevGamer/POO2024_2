@@ -192,52 +192,36 @@ public class VentaController {
         }
     }
 
-//    @FXML
-//    public void registrarVenta(){
-//        Locale locale = new Locale("es", "es-PE");
-//        LocalDateTime localDate = LocalDateTime.now();
-//        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss", locale);
-//        String fechaFormateada = localDate.format(formatter);
-//        Venta to=Venta.builder()
-//                .cliente(cs.searchById(dniRuc.getText()))
-//                .precioBase(Double.parseDouble(txtBaseImp.getText()))
-//                .igv(Double.parseDouble(txtIgv.getText()))
-//                .precioTotal(Double.parseDouble(txtImporteT.getText()))
-//                .usuario(daoU.searchById(SessionManager.getInstance().getUserId()))
-//                .serie("V")
-//                .tipoDoc("Factura")
-//                .fechaGener(localDate.parse(fechaFormateada, formatter))
-//                .numDoc("00" )
-//                .build();
-//        Venta idX = daoV.save(to);
-//        List<VentCarrito> dd = daoC.listaCarritoCliente(dniRuc.getText());
-//        if (idX.getIdVenta() != 0) {
-//            for (VentCarrito car : dd) {
-//                VentaDetalle vd = VentaDetalle.builder()
-//                        .venta(idX)
-//                        .producto(ps.searchById(car.producto.getIdProducto()))
-//                        .cantidad(car.getCantidad())
-//                        .descuento(0.0)
-//                        .pu(car.getPunitario())
-//                        .subtotal(car.getPtotal())
-//                        .build();
-//                daoVD.save(vd);
-//            }
-//        }
-//        daoC.deleteCarAll(dniRuc.getText());
-//        listar();
-//        try {
-//            jasperPrint= daoV.runReport(Long.parseLong(String.valueOf(idX.getIdVenta())));
-//            Platform.runLater(() -> {
-//                ReportAlert reportAlert=new ReportAlert(jasperPrint);
-//                reportAlert.show();
-//                //ReportDialog reportDialog = new ReportDialog(jasperPrint);
-//                //reportDialog.show();
-//            });
-//        }catch (Exception e){
-//            System.out.println(e.getMessage());
-//        }
-//    }
+    @FXML
+    public void registrarVenta() {
+        try {
+            // Lógica de registro de la venta (si aplica)
+            System.out.println("Venta registrada");
+
+            // Llama al servicio para eliminar todos los registros de la tabla VentCarrito
+            ventCarritoService.deleteAll();
+            pedidosService.deleteAllP();
+            listar(); // Refresca la tabla para reflejar los cambios
+
+            // Crear una alerta de información
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Registro de Venta");
+            alert.setHeaderText(null); // Puedes omitir el encabezado
+            alert.setContentText("Tu venta fue exitosa y el carrito ha sido limpiado.");
+
+            // Mostrar la alerta
+            alert.showAndWait();
+
+        } catch (Exception e) {
+            System.out.println("Error al registrar la venta: " + e.getMessage());
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("Ocurrió un error al registrar la venta.");
+            alert.showAndWait();
+        }
+    }
+
 
 
 }

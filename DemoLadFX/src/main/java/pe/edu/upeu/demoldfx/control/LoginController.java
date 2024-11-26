@@ -12,6 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 import pe.edu.upeu.demoldfx.componente.Toast;
 import pe.edu.upeu.demoldfx.dto.SessionManager;
@@ -41,9 +42,8 @@ public class LoginController {
     public void login(ActionEvent event) throws IOException {
         System.out.println("Botón de login presionado.");
         try {
-            Usuario usu=us.loginUsuario(txtUsuario.getText(),
-                    new String(txtClave.getText()));
-            if (usu!=null) {
+            Usuario usu=us.loginUsuario(txtUsuario.getText(), new String(txtClave.getText()));
+            if (usu!=null && new BCryptPasswordEncoder().matches(txtClave.getText(),usu.getClave())) {
                 SessionManager.getInstance().setUserId(usu.getIdUsuario());
                 SessionManager.getInstance().setUserName(usu.getUser());
                 SessionManager.getInstance().setNombrePerfil(usu.getPerfil().getNombre());
